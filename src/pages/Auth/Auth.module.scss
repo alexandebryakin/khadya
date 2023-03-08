@@ -1,0 +1,27 @@
+@import 'src/styles/_variables.scss';
+
+.welcome {
+  margin-bottom: 32px;
+}
+
+.weWillTextYou {
+  padding: 0 4px;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.authForm {
+  padding: 32px;
+  max-width: $breakpoint-xs;
+  border: 1px solid $gray-6;
+  border-radius: 20px;
+
+  @media (max-width: $breakpoint-xs) {
+    padding: 0px;
+    border: none;
+    border-radius: none;
+  }
+}

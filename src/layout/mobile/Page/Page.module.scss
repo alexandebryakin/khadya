@@ -1,0 +1,10 @@
+@import 'src/styles/_variables.scss';
+
+.page {
+  padding: 8px 16px 16px 16px;
+}
+
+.bottomMobileMenuSafeArea {
+  padding: $bottom-menu-padding;
+  height: $bottom-menu-height;
+}

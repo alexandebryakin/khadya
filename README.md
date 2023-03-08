@@ -8,39 +8,131 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Pages:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```yml
+TODO:
+  - seeds
+  - generate anonumous user
 
-### `yarn test`
+  - page: signin
+  - page: signup
+  - page: restaurant
+  - page: menu
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - layout: bottom_panel
 
-### `yarn build`
+Pages:
+  Explore: !DEFAULT Search/Filter restaurants
+    path: /
+  Restaurant:
+    path: /restaurant/:restaurantId
+    example: https://www.airbnb.co.in/rooms/605371928419351152
+    elements:
+      - BOTTOM:
+          - the navigation replaces itself with a button smth like `Choose Table` or `Order`?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+      - image carousel
+      - section: amenities (What this place offers)
+      - section: tables (Where you'll sit)
+          - table carousel
+              - image:
+              - name: Table 1
+              - seats: 4 seats
+              onClick:
+                - table page opens:
+                    - table image:
+                    - table info: name, num. of seats
+                    - CTA: Start # Or any other name to start session
+                        onClick:
+                          - open restaurant's menu page:
+                            # /restaurant/:restaurantId/menu/:menuId/session/:sessionId
+                            # /restaurant/:restaurantId/table/:tableId/session/:sessionId/menu/:menuId
+                            # --OR--
+                            # /restaurant/:restaurantId/menu/:menuId?sessionId=uuid
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+      - section: location on the map
+      - section: reviews
+          - review carousel
+    Menu:
+      path?: /restaurant/:restaurantId/menu/:menuId
+      elements:
+        - tabs?:
+            - welcome:
+                - Welcome to {restaurant.name}
+                - CTA: See Meals # or any other better name
+                    onClick: changes tab to 'menu'
+            - menu:
+                - Restaurant Image?
+                - Restaurant Name
+                - Scroller with some tags like [beverages, ...etc]
+                - the list of meals:
+                    meal card:
+                      - image:
+                      - name:
+                      - price:
+                      onClick:
+                        - meal page opens:
+    Meal:
+      comments:
+        - based on the scenario the page might appear differently:
+            - when user just lists through the menu
+            - when user selects a meal during session
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+      path:
 
-### `yarn eject`
+  Profile:
+    - Become an owner: -> makes you a restaurant owner
+    -
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Paths:
+  /:
+  /restaurant/:restaurantId:
+  /restaurant/:restaurantId/menu/:menuId:
+  /restaurant/:restaurantId/reviews:
+  /restaurant/:restaurantId/tables:
+  /restaurant/:restaurantId/table/:tableId:
+  /restaurant/:restaurantId/table/:tableId/session/new:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Components:
+  - Popup: https://mobile.ant.design/components/popup
+  - TabBar (BottomMenu): https://mobile.ant.design/components/tab-bar
+  - Badge: https://mobile.ant.design/components/badge
+  - SwipeAction: https://mobile.ant.design/components/swipe-action
+  - PullToRefresh: https://mobile.ant.design/components/pull-to-refresh
+  - Switch: https://mobile.ant.design/components/switch
+  - Swiper (For Photos): https://mobile.ant.design/components/swiper
+  - FloatingPanel (For things like in Google Maps when you want to see more details about selected place):
+      - https://mobile.ant.design/components/floating-panel
+```
 
-## Learn More
+```tsx
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+// TODO:
+<StickyBottomPanelProvider/>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+const useStickyBottomPanel = () => {
+
+  const outelets = {
+    all:,
+    current:,
+    add: (outletName: string, element: React.ReactNode) => ({}),
+    remove: (outletName: string) => ({}),
+    render: (outletName: string) => ({}),
+    get: (outletName: string) => ({}),
+  }
+
+  return {
+    outelets
+  }
+}
+
+const StickyBottomPanel = () => {
+  const { outelets } = useStickyBottomPanel()
+
+  return <div>{outelets.current}</div>
+}
+
+```

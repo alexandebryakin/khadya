@@ -1,0 +1,15 @@
+@import "src/styles/_variables.scss";
+
+.container {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+
+  border-top: 1px solid $gray-6;
+}
+
+// ---- Padded (Component) ----
+.padded {
+  padding: 4px 8px;
+}

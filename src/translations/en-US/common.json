@@ -1,0 +1,22 @@
+{
+  "generic": {
+    "login": "Log in",
+    "explore": "Explore",
+    "favorites": "Favorites",
+    "signup": "Signup",
+    "continue": "Continue",
+    "form": {
+      "rules": {
+        "fieldRequired": "This field is required",
+        "incorrectFormat": "Incorrect format"
+      }
+    }
+  },
+  "auth": {
+    "welcome": "Welcome",
+    "countryAndRegion": "Country/Region",
+    "phoneNumber": "Phone number",
+    "weWillTextYou": "We'll text you to confirm your Phone number. Standard message rates apply.",
+    "privacyPolicy": "Privacy Policy"
+  }
+}

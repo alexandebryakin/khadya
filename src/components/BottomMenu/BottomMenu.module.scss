@@ -1,0 +1,35 @@
+@import 'src/styles/_variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: $bottom-menu-padding;
+  min-height: $bottom-menu-height;
+}
+
+.item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: $gray-7;
+  text-decoration: inherit;
+}
+
+.icon {
+  font-size: 28px;
+}
+.iconActive {
+  color: $color-primary-0;
+}
+
+.label {
+  font-size: 10px;
+}
+.labelActive {
+  color: $gray-9;
+  color: $color-primary-0;
+}

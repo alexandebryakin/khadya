@@ -1,0 +1,42 @@
+# https://www.graphql-code-generator.com/docs/config-reference/codegen-config
+
+generation_defaults: &generation_defaults
+  config:
+    avoidOptionals:
+      field: true
+      inputValue: false
+      object: false
+      resolvers: true
+      defaultValue: true
+    strictScalars: true
+    scalars:
+      ISO8601Date: string
+      ISO8601DateTime: string
+      JSON: Object
+      BigInt: number
+      Upload: File
+  plugins:
+    - typescript
+    - typescript-operations
+    - typescript-react-apollo
+    - add:
+        # right now we don't have any option but to keep using Object type in the generated code
+        content: '/* eslint-disable @typescript-eslint/ban-types */'
+
+overwrite: true
+
+# [INFO]: A flag to enable printing debug logs
+debug: true
+
+# [INFO]: A flag to enable tasks verbose mode
+verbose: true
+
+generates:
+  src/api/graphql.types.ts:
+    schema: 'http://localhost:3001/public/graphql_schema'
+    documents: ['src/api/**/*.ts*'] # it specifies the paths to look for
+    <<: *generation_defaults
+
+hooks:
+  afterAllFileWrite:
+    - prettier --write
