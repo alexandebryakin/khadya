@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { User, useGetUserLazyQuery } from '../../api/graphql.types';
+import { GetUserQueryVariables, User, useGetUserLazyQuery } from '../../api/graphql.types';
 import { jwt } from '../../api/jwt';
 
 type AuthContextType = {
   user: User;
+  setUser: React.Dispatch<React.SetStateAction<User | undefined>>;
 };
 
 export const AuthContext = React.createContext({} as AuthContextType);
@@ -16,7 +17,24 @@ const ENDPOINTS = {
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<User>();
 
-  const [getUser, { data }] = useGetUserLazyQuery();
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === 'development') {
+      Object.assign(window, { user });
+    }
+  }, [user]);
+
+  const [getUser] = useGetUserLazyQuery();
+
+  const refetchUser = async (userId: GetUserQueryVariables['userId'] | undefined) => {
+    if (!userId) return;
+
+    const response = await getUser({ variables: { userId } });
+    const user = response.data?.user;
+
+    if (!user) return;
+
+    setUser(user);
+  };
 
   React.useEffect(() => {
     (async () => {
@@ -29,24 +47,14 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
       const tokenDecoded = jwt.decoded();
       const userId = tokenDecoded?.data.user.id;
 
-      if (!userId) return;
-
-      getUser({ variables: { userId } });
+      refetchUser(userId);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => {
-    if (!data?.user) return;
-
-    setUser(data.user);
-
-    if (process.env.NODE_ENV === 'development') {
-      Object.assign(window, { user: data.user });
-    }
-  }, [data]);
-
   if (!user) return null;
 
-  return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, setUser }}>{children}</AuthContext.Provider>;
 };
+
+export const useAuth = () => React.useContext(AuthContext);

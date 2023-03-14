@@ -17,6 +17,12 @@
     "countryAndRegion": "Country/Region",
     "phoneNumber": "Phone number",
     "weWillTextYou": "We'll text you to confirm your Phone number. Standard message rates apply.",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "confirmYourNumber": "Confirm your number",
+    "enterOtp": "Enter the code we've sent via SMS to {{phone}}",
+    "errors": {
+      "failedToSendOTP": "Something went wrong while trying to send an OTP. Please, try again",
+      "failedToConfirmOTP": "Sorry, we are not able to verify the code. Please make sure you enter the right mobile number and code."
+    }
   }
 }

@@ -34,3 +34,9 @@ $bottom-menu-padding: 8px 16px;
 // [BREAKPOINTS]
 $breakpoint-xs: 440px;
 $breakpoint-s: 740px;
+
+@mixin mediaXS {
+  @media (max-width: $breakpoint-xs) {
+    @content;
+  }
+}
