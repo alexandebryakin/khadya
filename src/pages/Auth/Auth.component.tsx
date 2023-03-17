@@ -96,12 +96,19 @@ const PhoneForm = ({ steps }: PhoneFormProps) => {
     <div className={styles.phoneForm}>
       <h2 className={styles.welcome}>{t('auth.welcome')}</h2>
 
-      <Form name="phone" form={form} layout="vertical" onFinish={onFinish} autoComplete="off">
+      <Form<SendOneTimePasswordMutationVariables>
+        name="phone"
+        form={form}
+        layout="vertical"
+        onFinish={onFinish}
+        autoComplete="off"
+        initialValues={steps.phone.get()}
+      >
         <Form.Item
           name={FIELDS.code}
           rules={[{ required: true, message: t('generic.form.rules.fieldRequired').toString() }]}
         >
-          <PhoneCodeSelect onChange={onChangePhoneCode} />
+          <PhoneCodeSelect initialValue={steps.phone.get()?.code} onChange={onChangePhoneCode} />
         </Form.Item>
 
         <Form.Item
@@ -153,9 +160,8 @@ const OtpForm = ({ steps }: OtpFormProps) => {
 
     if (response?.status === Status.Success) {
       auth.setUser(response.user);
+      auth.saveJWT(response.token);
       navigate(routes.explore()._);
-      // TODO: fix bottom menu (active states)
-      // TODO: replace unauthorized bootom menu to authorized
       return;
     }
 
@@ -221,34 +227,8 @@ const OtpForm = ({ steps }: OtpFormProps) => {
   );
 };
 
-// const AuthFormLayout = () => {};
-// AuthFormLayout.PaddedContainer = () => {};
-
 const AuthForm = () => {
-  const [t] = useTranslation('common');
-  // const [step, setStep] = React.useState<Step>('enter-phone');
   const steps = useAuthSteps();
-
-  // const [form] = Form.useForm<ArgsType>();
-  // const code = Form.useWatch(FIELDS.code, form);
-
-  // const onChangePhoneCode = (option: PhoneCodeOption) => {
-  //   form.setFieldValue(FIELDS.code, option.numberCode);
-  // };
-
-  // const [sendOTP, otpResponse] = useSendOneTimePasswordMutation();
-
-  // const onFinish: FormProps['onFinish'] = async (variables) => {
-  //   const response = await sendOTP({ variables });
-
-  //   if (response.data?.sendOneTimePassword?.status === Status.Success) {
-  //     setStep('enter-otp');
-  //   } else {
-  //     notification.error({
-  //       message: t('auth.errors.failedToSendOTP'),
-  //     });
-  //   }
-  // };
 
   const views: Record<Step, React.ReactNode> = {
     'enter-phone': <PhoneForm steps={steps} />,

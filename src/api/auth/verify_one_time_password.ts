@@ -7,6 +7,7 @@ export const SEND_ONE_TIME_PASSWORD = gql`
         ...UserFields
       }
       status
+      token
       errors {
         oneTimePassword
       }

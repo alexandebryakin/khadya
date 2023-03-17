@@ -1,0 +1,37 @@
+@import 'src/styles/_variables.scss';
+
+.genericAccountInfo {
+  display: flex;
+  gap: 12px;
+}
+
+.userIcon {
+  font-size: 64px;
+  color: $gray-8;
+}
+
+.firstName {
+  font-weight: 200;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // gap: 8px;
+}
+
+.specifyButton {
+  padding: 0;
+  height: 0;
+}
+
+.specifyLabel {
+  margin-left: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logoutButton {
+  margin-top: 20px;
+}

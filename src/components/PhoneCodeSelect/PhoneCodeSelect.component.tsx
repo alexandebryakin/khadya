@@ -8,10 +8,11 @@ const filterOption: SelectProps['filterOption'] = (input, option) =>
   (option?.label || '').toString().toLowerCase().includes(input.toLowerCase());
 
 interface PhoneCodeInputProps {
+  initialValue: PhoneCodeOption['numberCode'] | undefined;
   onChange?: (option: PhoneCodeOption) => void;
 }
 
-const PhoneCodeSelect = ({ onChange }: PhoneCodeInputProps) => {
+const PhoneCodeSelect = ({ initialValue, onChange }: PhoneCodeInputProps) => {
   const [t] = useTranslation('common');
 
   const handleChange: SelectProps<string, PhoneCodeOption>['onChange'] = (value, options) => {
@@ -29,6 +30,7 @@ const PhoneCodeSelect = ({ onChange }: PhoneCodeInputProps) => {
       onChange={handleChange}
       filterOption={filterOption}
       options={phoneCodes}
+      defaultValue={phoneCodes.find((pc) => pc.numberCode === initialValue)?.value}
     />
   );
 };

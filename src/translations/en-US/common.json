@@ -1,10 +1,15 @@
 {
   "generic": {
     "login": "Log in",
+    "logout": "Log out",
     "explore": "Explore",
     "favorites": "Favorites",
+    "profile": "Profile",
     "signup": "Signup",
     "continue": "Continue",
+    "specify": "Specify",
+    "edit": "Edit",
+    "save": "Save",
     "form": {
       "rules": {
         "fieldRequired": "This field is required",
@@ -23,6 +28,14 @@
     "errors": {
       "failedToSendOTP": "Something went wrong while trying to send an OTP. Please, try again",
       "failedToConfirmOTP": "Sorry, we are not able to verify the code. Please make sure you enter the right mobile number and code."
+    }
+  },
+  "profile": {
+    "nameNotSpecified": "You haven't specified your name yet",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "errors": {
+      "failedToSaveUserInfo": "Something went wrong while trying to save data. Please, try again"
     }
   }
 }
