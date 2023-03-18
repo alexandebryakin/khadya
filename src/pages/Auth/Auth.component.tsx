@@ -48,7 +48,6 @@ type StepsController = {
 
 const useAuthSteps = (): StepsController => {
   const [step, set] = React.useState<Step>('enter-phone');
-  // const [step, set] = React.useState<Step>('enter-otp'); // TODO: replace with the first step
   const phone = React.useRef<SendOneTimePasswordMutationVariables>();
 
   return React.useMemo(() => {

@@ -1,6 +1,5 @@
 import { Button, Form, FormProps, Input, notification } from 'antd';
 import { DotLoading } from 'antd-mobile';
-import { LeftOutline } from 'antd-mobile-icons';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,7 +8,6 @@ import {
   UpdateCurrentUserInfoMutationVariables,
   useUpdateCurrentUserInfoMutation,
 } from '../../../api/graphql.types';
-import { useGoBack } from '../../../hooks/useGoBack';
 import useToggler from '../../../hooks/useToggler';
 import { BottomPanels } from '../../../layout/mobile/Layout';
 import Page from '../../../layout/mobile/Page';
@@ -78,7 +76,7 @@ const PersonalInfoForm = () => {
 };
 
 const PersonalInfo = () => {
-  const goBack = useGoBack();
+  const [t] = useTranslation('common');
   const { actions, outlets } = useBottomPanel();
 
   React.useEffect(() => {
@@ -90,13 +88,11 @@ const PersonalInfo = () => {
 
   return (
     <div>
-      <div className={styles.topPanel}>
-        <div className={styles.backButton} onClick={goBack}>
-          <LeftOutline />
-        </div>
-      </div>
+      <Page.TopPanel />
 
       <Page>
+        <Page.Header>{t('profile.personalInfo')}</Page.Header>
+
         <div>
           <PersonalInfoForm />
         </div>

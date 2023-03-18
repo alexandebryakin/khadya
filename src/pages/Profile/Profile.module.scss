@@ -35,3 +35,43 @@
 .logoutButton {
   margin-top: 20px;
 }
+
+.sectionContent {
+  margin-bottom: 48px;
+}
+
+.questionIcon {
+  margin-top: 1px;
+  font-size: 14px !important;
+}
+
+.becomeAnOwnerDescriptionWrapper {
+  color: $gray-8;
+  display: flex;
+}
+
+.becomeAnOwnerDescription {
+  margin-left: 8px;
+}
+
+.enrollButton {
+  margin-top: 12px;
+}
+
+.addButton {
+  margin-top: 16px;
+}
+
+.add {
+  margin-left: 8px;
+}
+
+.restaurantsList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.restaurant {
+  cursor: pointer;
+}

@@ -5,6 +5,8 @@ import Page from '../layout/mobile/Page/Page.component';
 import Auth from '../pages/Auth';
 import Profile from '../pages/Profile';
 import PersonalInfo from '../pages/Profile/PersonalInfo';
+import AddRestaurant from '../pages/Restaurants/AddRestaurant';
+import ManageRestaurant from '../pages/Restaurants/ManageRestaurant';
 import Protected from './Protected.component';
 import { routes } from './routes';
 
@@ -24,6 +26,14 @@ const AppRoutes = () => {
             }
           />
           <Route
+            path={routes.restaurants().new()._}
+            element={
+              <Protected>
+                <AddRestaurant />
+              </Protected>
+            }
+          />
+          <Route
             path={routes.profile().personalInfo()._}
             element={
               <Protected>
@@ -31,6 +41,16 @@ const AppRoutes = () => {
               </Protected>
             }
           />
+
+          <Route
+            path={routes.manage().restaurants(':restaurantId')._}
+            element={
+              <Protected>
+                <ManageRestaurant />
+              </Protected>
+            }
+          />
+
           <Route path={routes.login()._} element={<Auth />} />
           <Route path="*" element={<Navigate to={routes.explore()._} replace />} />
         </Route>

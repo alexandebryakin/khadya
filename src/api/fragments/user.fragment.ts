@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const USER_FRAGMENT = gql`
   fragment UserFields on User {
@@ -12,6 +12,12 @@ export const USER_FRAGMENT = gql`
     }
     emails {
       ...EmailFields
+    }
+    network {
+      ...NetworkFields
+    }
+    restaurants {
+      ...RestaurantFields
     }
   }
 `;

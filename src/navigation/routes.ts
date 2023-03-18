@@ -11,6 +11,12 @@ type DromosRoutes = {
   profile: Subroute<{
     personalInfo: Route;
   }>;
+  restaurants: Subroute<{
+    new: Route;
+  }>;
+  manage: Subroute<{
+    restaurants: Route;
+  }>;
 };
 
 export const routes = builder.define<DromosRoutes>((root) => {
@@ -19,6 +25,12 @@ export const routes = builder.define<DromosRoutes>((root) => {
   root.define('login');
   root.define('profile').subroutes((profile) => {
     profile.define('personalInfo');
+  });
+  root.define('restaurants').subroutes((restaurants) => {
+    restaurants.define('new');
+  });
+  root.define('manage').subroutes((manage) => {
+    manage.define('restaurants');
   });
 }, config);
 

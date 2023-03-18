@@ -10,12 +10,24 @@
     "specify": "Specify",
     "edit": "Edit",
     "save": "Save",
+    "add": "Add",
+    "menu": "Menu",
+    "upload": "Upload",
+    "restaurant": "Restaurant",
+    "images": "Images",
+    "tables": "Tables",
     "form": {
       "rules": {
         "fieldRequired": "This field is required",
         "incorrectFormat": "Incorrect format"
       }
     }
+  },
+  "pageNotFound": {
+    "ooops": "Ooops!",
+    "pageNotFound": "Page Not Found",
+    "explanation": "This page doesn't exist or was removed!",
+    "goBack": "Go back"
   },
   "auth": {
     "welcome": "Welcome",
@@ -31,11 +43,25 @@
     }
   },
   "profile": {
+    "personalInfo": "Personal info",
     "nameNotSpecified": "You haven't specified your name yet",
     "firstName": "First name",
     "lastName": "Last name",
+    "bacomeAnOwner": "Become an Owner",
+    "manageYourRestaurants": "Manage Your Restaurants",
+    "enroll": "Enroll",
     "errors": {
       "failedToSaveUserInfo": "Something went wrong while trying to save data. Please, try again"
+    }
+  },
+  "restaurants": {
+    "addRestaurant": "Add restaurant",
+    "specifyYourRestaurantsName": "Specify your restaurant's name",
+    "myRestaurants": "My restaurants",
+    "errors": {
+      "failedToCreateRestaurant": "Something went wrong while trying to create a restaurant. Please, try again",
+      "failedToUploadImage": "Something went wrong while trying to upload an image. Please, try again",
+      "failedToRemoveImage": "Something went wrong while trying to remove an image. Please, try again"
     }
   }
 }

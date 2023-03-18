@@ -1,19 +1,12 @@
-import styles from "./BottomPanel.module.scss";
+import cx from 'classnames';
 
-import cx from "classnames";
-import { useBottomPanel } from "./BottomPanel.context";
+import { useBottomPanel } from './BottomPanel.context';
+import styles from './BottomPanel.module.scss';
 
 const BottomPanel = () => {
   const { outlets } = useBottomPanel();
 
-  // if(!outlets.current) return null;
-
-  return (
-    <div className={styles.container}>
-      {outlets.current?.element}
-      {/* <BottomPanel.Padded>TODO:</BottomPanel.Padded> */}
-    </div>
-  );
+  return <div className={styles.container}>{outlets.current?.element}</div>;
 };
 
 BottomPanel.Padded = ({ className, ...props }: DivProps) => {

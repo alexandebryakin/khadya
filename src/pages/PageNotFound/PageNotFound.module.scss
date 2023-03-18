@@ -1,0 +1,28 @@
+@import 'src/styles/_variables.scss';
+
+.notFoundHttpCode {
+  font-size: 6em;
+  font-weight: 600;
+}
+
+.ooops {
+  font-size: 2em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.pageNotFound {
+  font-size: 2em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.explanation {
+  color: $gray-7;
+  margin-top: 12px;
+  font-size: 1.2em;
+}
+
+.backButton {
+  margin-top: 20px;
+}
